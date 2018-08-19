@@ -7,18 +7,13 @@ module.exports = {
     entry: {
         app: './src/index.js'
     },
-    // resolveLoader: {
-    //     modules: [ 'src/provider' ],
-    //     mainFields: [ 'app' ]
-    // },
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist'
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Output Managements',
-            template: 'src/index.html'
+            template: './src/index.html'
         }),
         new CleanWebpackPlugin(['dist'])
     ],
@@ -28,8 +23,7 @@ module.exports = {
         publicPath: '/'
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.html$/,
                 use: [
                     'html-loader'
@@ -54,6 +48,11 @@ module.exports = {
                     'file-loader'
                 ]
             },
+            // {
+            //     test: /\.json/,
+            //     exclude: /node_modules/,
+            //     loader: 'json-loader',
+            // },
             {
                 test: /\.(csv|tsv)$/,
                 use: [
@@ -71,6 +70,16 @@ module.exports = {
                 use: [
                     'raw-loader'
                 ]
+            },
+            {
+                test: /\.less$/,
+                use: [{
+                    loader: 'style-loader' // creates style nodes from JS strings
+                }, {
+                    loader: 'css-loader' // translates CSS into CommonJS
+                }, {
+                    loader: 'less-loader' // compiles Less to CSS
+                }]
             }
         ]
     },
