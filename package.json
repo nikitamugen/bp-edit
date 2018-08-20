@@ -38,8 +38,10 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "@mdi/font": "^2.6.95",
     "bpmn-js": "^2.4.1",
     "bpmn-js-properties-panel": "^0.26.1",
+    "diagram-js-minimap": "^1.2.2",
     "jquery": "^3.3.1",
     "lodash": "^4.17.10",
     "min-dash": "^3.1.0"

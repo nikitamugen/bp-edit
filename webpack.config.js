@@ -48,11 +48,6 @@ module.exports = {
                     'file-loader'
                 ]
             },
-            // {
-            //     test: /\.json/,
-            //     exclude: /node_modules/,
-            //     loader: 'json-loader',
-            // },
             {
                 test: /\.(csv|tsv)$/,
                 use: [
@@ -73,13 +68,11 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                use: [{
-                    loader: 'style-loader' // creates style nodes from JS strings
-                }, {
-                    loader: 'css-loader' // translates CSS into CommonJS
-                }, {
-                    loader: 'less-loader' // compiles Less to CSS
-                }]
+                use: [
+                    'style-loader', // creates style nodes from JS strings
+                    'css-loader', // translates CSS into CommonJS
+                    'less-loader' // compiles Less to CSS
+                ]
             }
         ]
     },

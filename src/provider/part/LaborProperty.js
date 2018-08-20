@@ -10,12 +10,12 @@ export default function(group, element) {
     // Only return an entry, if the currently selected
     // element is a start event.
 
-    if (is(element, 'bpmn:StartEvent')) {
+    if (is(element, 'bpmn:UserTask')) {
         group.entries.push(entryFactory.textField({
-            id: 'spell',
-            description: 'Apply a black magic spell',
-            label: 'Spell',
-            modelProperty: 'spell'
+            id: 'executor-role',
+            description: 'Choose executor role for the task',
+            label: 'Executor role',
+            modelProperty: 'executor-role'
         }));
     }
 }

@@ -50,24 +50,24 @@ function createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate
 }
 
 // Create the custom magic tab
-function createMagicTabGroups(element, elementRegistry) {
+function createLaborTabGroups(element, elementRegistry) {
 
-    // Create a group called "Black Magic".
-    var blackMagicGroup = {
-        id: 'black-magic',
-        label: 'Black Magic',
+    // Create a group called "labor".
+    var laborGroup = {
+        id: 'labor-property',
+        label: 'Labor',
         entries: []
     };
 
-    // Add the spell props to the black magic group.
-    laborProperty(blackMagicGroup, element);
+    // Add the props to the group.
+    laborProperty(laborGroup, element);
 
     return [
-        blackMagicGroup
+        laborGroup
     ];
 }
 
-export default function MagicPropertiesProvider(
+export default function CustomPropertiesProvider(
     eventBus, bpmnFactory, elementRegistry,
     translate) {
 
@@ -78,22 +78,18 @@ export default function MagicPropertiesProvider(
         var generalTab = {
             id: 'general',
             label: 'General',
-            groups: createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate)
+            groups: [].concat(
+                        createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate)
+                    ).concat(
+                        createLaborTabGroups(element, elementRegistry)
+                    )
         };
 
-        // The "magic" tab
-        var magicTab = {
-            id: 'magic',
-            label: 'Magic',
-            groups: createMagicTabGroups(element, elementRegistry)
-        };
-
-        // Show general + "magic" tab
+        // Show general + "labor" tab
         return [
-            generalTab,
-            magicTab
+            generalTab
         ];
     };
 }
 
-inherits(MagicPropertiesProvider, PropertiesActivator);
+inherits(CustomPropertiesProvider, PropertiesActivator);

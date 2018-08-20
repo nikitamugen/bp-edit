@@ -109,12 +109,13 @@
     }
   }
   
+  @property-panel-width: 400px;
   #js-properties-panel {
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
-    width: 260px;
+    width: @property-panel-width;
     z-index: 10;
     border-left: 1px solid #ccc;
     overflow: auto;
@@ -126,5 +127,20 @@
       min-height:100%;
     }
   }
-  
+
   @import "~bpmn-js-properties-panel/styles/properties";
+
+  @import "~diagram-js-minimap/assets/diagram-js-minimap.css";
+  @import "~@mdi/font/css/materialdesignicons.css";
+  .djs-minimap {
+    position: absolute;
+    right: calc(~"20px +" @property-panel-width);
+    font-size: 2em;
+    order: -1;
+  }
+  .djs-minimap:not(.open) .toggle:before {
+    content: '\f34d';
+  }
+  .djs-minimap.open .toggle:before {
+    content: '\f156';
+  }

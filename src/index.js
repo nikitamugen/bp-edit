@@ -8,6 +8,10 @@ import $ from 'jquery';
 import _ from 'lodash';
 import { debounce } from 'min-dash';
 
+import MiniMapModule from 'diagram-js-minimap';
+
+import ResizeAllRuleModule from './rule';
+
 import PropertiesPanelModule from 'bpmn-js-properties-panel';
 import PropertiesProviderModule from './provider';
 import LaborDescriptor from './descriptor/labor';
@@ -22,13 +26,18 @@ var bpmnModeler = new Modeler({
         parent: '#js-properties-panel'
     },
     additionalModules: [
+        MiniMapModule,
         PropertiesProviderModule,
-        PropertiesPanelModule
+        PropertiesPanelModule,
+        ResizeAllRuleModule
     ],
     moddleExtensions: {
         magic: LaborDescriptor
     }
 });
+$(".djs-minimap")
+.addClass("mdi")
+.addClass("mdi-set");
 
 function createNewDiagram() {
     openDiagram(diagramXML);
