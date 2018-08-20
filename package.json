@@ -10,7 +10,7 @@
     "watch": "webpack --watch",
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "server": "node server.js",
-    "gh-deploy": "webpack --config webpack.prod.js && mv docs/* ./ && git branch && git branch -f gh-pages && git add -f --all docs/ && git commit -am deploy && git push -fu origin gh-pages"
+    "gh-deploy": "./deploy.sh"
   },
   "keywords": [],
   "author": "",
