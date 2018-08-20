@@ -4,7 +4,8 @@
 webpack --config webpack.prod.js
 
 # remove all except docs
-shopt -s extglob && rm -r -- !(docs)
+shopt -s extglob
+rm -r !(docs|node_modules)
 mv docs/* ./ && rm docs -rf
 
 # create branch hg-pages
