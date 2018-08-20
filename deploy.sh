@@ -10,6 +10,7 @@ mv docs/* ./ && rm docs -rf
 
 # create branch hg-pages
 git branch -f gh-pages
+git checkout gh-pages
 
 # commit and push to repo
 ls | grep -viE '(node_modules)' | xargs git add -f
